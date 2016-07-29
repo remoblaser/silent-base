@@ -1,0 +1,17 @@
+{
+    "name": "remoblaser/esport-teams",
+    "description": "WP Plugin to manage requirements for SILENTGAMING",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Remo Blaser",
+            "email": "remo.blaser@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Remoblaser\\Plugin\\": "src/"
+        }
+    }
+}
