@@ -13,7 +13,7 @@ return [
         'not_found'             => __('Keine Awards gefunden', 'rb'),
         'not_found_in_trash'    => __('Keine Awards im Papierkorb gefunden', 'rb'),
         'parent_item_colon'     => __('Übergeordneter Award', 'rb'),
-        'menu_name'             => __('Award', 'rb')
+        'menu_name'             => __('Awards', 'rb')
     ],
     'public'                => true,
     'has_archive'           => true,
