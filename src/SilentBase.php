@@ -66,14 +66,17 @@ class SilentBase
 
     public function extendAwardForm()
     {
-        $playerForm = new CMBForm('award', 'Awardinfo', ['awards']);
-        $playerForm->addText('event', 'Eventname');
-        $playerForm->addText('rank', 'Platz');
-        $playerForm->addText('game', 'Game');
+        $awardForm = new CMBForm('award', 'Awardinfo', ['awards']);
+        $awardForm->addText('event', 'Eventname');
+        $awardForm->addText('rank', 'Platz');
+        $awardForm->addText('game', 'Game');
     }
 
     public function extendSponsorForm()
     {
-        
+        $sponsorForm = new CMBForm('sponsor', 'Sponsoreninfo', ['sponsors']);
+        $sponsorForm->addText('name', 'Name');
+        $sponsorForm->addText('url', 'Website');
+        $sponsorForm->addUploadField('logo', 'Logo');
     }
 }

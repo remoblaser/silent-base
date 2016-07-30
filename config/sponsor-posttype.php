@@ -36,7 +36,6 @@ return [
         //'post-formats',
     ],
     'taxonomies' => [// add default post categories and tags
-        'teams'
     ], 
     'menu_position'         => 7,
     'exclude_from_search'   => false,
