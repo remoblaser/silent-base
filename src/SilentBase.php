@@ -18,6 +18,8 @@ class SilentBase
         add_action('cmb2_admin_init', [$this, 'extendAwardForm']);
         add_action('cmb2_admin_init', [$this, 'extendSponsorForm']);
 
+        add_action('add_meta_boxes', [$this, 'removeSeo'], 11);
+
     }
 
     public function registerPlayerPostType()
@@ -79,4 +81,11 @@ class SilentBase
         $sponsorForm->addText('url', 'Website');
         $sponsorForm->addUploadField('logo', 'Logo');
     }
+
+    public function removeSeo()
+    {
+        remove_meta_box('wpseo_meta', 'players', 'normal');
+        remove_meta_box('wpseo_meta', 'sponsors', 'normal');
+        remove_meta_box('wpseo_meta', 'awards', 'normal');
+    }   
 }
