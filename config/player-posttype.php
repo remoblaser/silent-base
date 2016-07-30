@@ -23,10 +23,10 @@ return [
     'capability_type'       => 'post',
     'hierarchical'          => false,
     'supports' => [
-        'title',
-        'editor',
+        //'title',
+        //'editor',
         //'excerpt',
-        'thumbnail',
+        //'thumbnail',
         //'author',
         //'trackbacks',
         //'custom-fields',

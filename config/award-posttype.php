@@ -23,9 +23,9 @@ return [
     'capability_type'       => 'post',
     'hierarchical'          => false,
     'supports' => [
-        'title',
+        //'title',
         //'editor',
-        'excerpt',
+        //'excerpt',
         //'thumbnail',
         //'author',
         //'trackbacks',
