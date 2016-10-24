@@ -23,7 +23,7 @@ return [
     'capability_type'       => 'post',
     'hierarchical'          => false,
     'supports' => [
-        //'title',
+        'title',
         //'editor',
         //'excerpt',
         //'thumbnail',

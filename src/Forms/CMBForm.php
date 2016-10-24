@@ -6,23 +6,14 @@ class CMBForm
 {
     protected $cmbBox;
 
-    public function __construct($id, $name, $objectTypes)
+    public function __construct($id, $name, $objectTypes, $showOn = [])
     {
-        $this->cmbBox = \new_cmb2_box(
-                [
-                    'id'            => $id . '_metabox',
-                    'title'         => __( $name, 'rb' ),
-                    'object_types'  => $objectTypes, // Post type
-                    // 'show_on_cb' => 'yourprefix_show_if_front_page', // function should return a bool value
-                    // 'context'    => 'normal',
-                    // 'priority'   => 'high',
-                    // 'show_names' => true, // Show field names on the left
-                    // 'cmb_styles' => false, // false to disable the CMB stylesheet
-                    // 'closed'     => true, // true to keep the metabox closed by default
-                    // 'classes'    => 'extra-class', // Extra cmb2-wrap classes
-                    // 'classes_cb' => 'yourprefix_add_some_classes', // Add classes through a callback.
-                ]
-        );
+        $this->cmbBox = \new_cmb2_box([
+            'id' => $id . '_metabox',
+            'title' => __( $name, 'rb' ),
+            'object_types' => $objectTypes, 
+            'show_on' => $showOn
+        ]);
     }
 
     public function addText($id, $name, $desc = '')
@@ -30,7 +21,7 @@ class CMBForm
         $this->cmbBox->add_field([
             'name' => __($name, 'rb'),
             'desc' => $desc,
-            'id' => $id . '_text_medium',
+            'id' => $id,
             'type' => 'text'
         ]);   
     }
@@ -40,8 +31,18 @@ class CMBForm
         $this->cmbBox->add_field([
             'name' => __($name, 'rb'),
             'desc' => $desc,
-            'id' => $id . '_textarea',
+            'id' => $id,
             'type' => 'textarea'
+        ]);   
+    }
+
+    public function addRte($id, $name, $desc='')
+    {
+        $this->cmbBox->add_field([
+            'name' => __($name, 'rb'),
+            'desc' => $desc,
+            'id' => $id,
+            'type' => 'wysiwyg'
         ]);   
     }
 
@@ -50,14 +51,9 @@ class CMBForm
         $this->cmbBox->add_field([
             'name' => __($name, 'rb'),
             'desc' => __($desc, 'rb'),
-            'id' => $id . '_file_list',
+            'id' => $id,
             'type' => 'file',
             'preview_size' => [100, 100 ]
         ]);   
-    }
-
-    public function register()
-    {
-
     }
 }

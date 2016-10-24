@@ -10,6 +10,7 @@ class SilentBase
     {
         add_action('init', [$this, 'registerPlayerPostType']);
         add_action('init', [$this, 'registerTeamTaxonomy']);
+        add_action('init', [$this, 'registerSponsorTaxonomy']);
         add_action('init', [$this, 'registerSponsorPostType']);
         add_action('init', [$this, 'registerAwardPostType']);
         add_action('init', [$this, 'registerEventTaxonomy']);
@@ -17,9 +18,15 @@ class SilentBase
         add_action('cmb2_admin_init', [$this, 'extendPlayerForm']);
         add_action('cmb2_admin_init', [$this, 'extendAwardForm']);
         add_action('cmb2_admin_init', [$this, 'extendSponsorForm']);
+        add_action('cmb2_admin_init', [$this, 'buildHomeForm']);
 
-        add_action('add_meta_boxes', [$this, 'removeSeo'], 11);
 
+        add_action('init', [$this, 'removeRte'],100);
+    }
+
+    public function removeRte()
+    {
+        remove_post_type_support('page', 'editor');
     }
 
     public function registerPlayerPostType()
@@ -46,30 +53,33 @@ class SilentBase
         register_taxonomy('events', 'awards',  $taxonomy);
     }
 
+    public function registerSponsorTaxonomy()
+    {
+        $taxonomy = require(__DIR__ . '/../config/sponsor-taxonomy.php');
+        register_taxonomy('sponsortypes', 'sponsors',  $taxonomy);
+    }
+
     public function registerSponsorPostType()
     {
         $postType = require(__DIR__ . '/../config/sponsor-posttype.php');
         register_post_type('sponsors', $postType);
     }
-
+    
     public function extendPlayerForm()
     {
         $playerForm = new CMBForm('player', 'Spielerinfo', ['players']);
         $playerForm->addText('name', 'Name');
         $playerForm->addText('prename', 'Vorname');
-        $playerForm->addText('nickname', 'Nickname');
         $playerForm->addText('roles', 'Rollen');
         $playerForm->addText('twitch', 'Twitch URL');
         $playerForm->addText('twitter', 'Twitter URL');
         $playerForm->addTextArea('description', 'Beschreibung');
         $playerForm->addUploadField('player_image', 'Bild');
-        $playerForm->register();
     }
 
     public function extendAwardForm()
     {
         $awardForm = new CMBForm('award', 'Awardinfo', ['awards']);
-        $awardForm->addText('event', 'Eventname');
         $awardForm->addText('rank', 'Platz');
         $awardForm->addText('game', 'Game');
     }
@@ -77,15 +87,17 @@ class SilentBase
     public function extendSponsorForm()
     {
         $sponsorForm = new CMBForm('sponsor', 'Sponsoreninfo', ['sponsors']);
-        $sponsorForm->addText('name', 'Name');
         $sponsorForm->addText('url', 'Website');
         $sponsorForm->addUploadField('logo', 'Logo');
     }
 
-    public function removeSeo()
+    public function buildHomeForm()
     {
-        remove_meta_box('wpseo_meta', 'players', 'normal');
-        remove_meta_box('wpseo_meta', 'sponsors', 'normal');
-        remove_meta_box('wpseo_meta', 'awards', 'normal');
-    }   
+        $pageForm = new CMBForm('page', 'Seitentexte', ['page'], ['key' => 'id', 'value' => [2]]);
+        $pageForm->addRte('about_left', 'About us - Left');
+        $pageForm->addRte('about_right', 'About us - Right');
+        $pageForm->addRte('about_bottom', 'About us - Bottom');
+        $pageForm->addRte('community', 'Text Community');
+        $pageForm->addRte('sponsors', 'Text Sponsoren');
+    }
 }
