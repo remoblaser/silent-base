@@ -14,12 +14,14 @@ class SilentBase
         add_action('init', [$this, 'registerSponsorPostType']);
         add_action('init', [$this, 'registerAwardPostType']);
         add_action('init', [$this, 'registerEventTaxonomy']);
+        add_action('init', [$this, 'registerManagementPostType']);
 
         add_action('cmb2_admin_init', [$this, 'buildPlayerForm']);
         add_action('cmb2_admin_init', [$this, 'buildAwardForm']);
         add_action('cmb2_admin_init', [$this, 'buildSponsorForm']);
         add_action('cmb2_admin_init', [$this, 'buildHomeForm']);
         add_action('cmb2_admin_init', [$this, 'buildEventForm']);
+        add_action('cmb2_admin_init', [$this, 'buildManagementForm']);
 
         add_action('init', [$this, 'removeRte'],100);
     }
@@ -64,6 +66,12 @@ class SilentBase
         $postType = require(__DIR__ . '/../config/sponsor-posttype.php');
         register_post_type('sponsors', $postType);
     }
+
+    public function registerManagementPostType()
+    {
+        $postType = require(__DIR__ . '/../config/management-posttype.php');
+        register_post_type('managers', $postType);
+    }
     
     public function buildPlayerForm()
     {
@@ -105,5 +113,16 @@ class SilentBase
     {
         $evenForm = new CMBForm('event', 'Info', null, ['events']);
         $evenForm->addSelect('type', 'Typ', ['league'=>'Liga','cup'=>'Online Cup','lan'=>'LAN-Parties']);
+    }
+
+    public function buildManagementForm()
+    {
+        $playerForm = new CMBForm('manager', 'Manager Info', ['managers']);
+        $playerForm->addText('name', 'Name');
+        $playerForm->addText('prename', 'Vorname');
+        $playerForm->addText('role', 'Rolle');
+        $playerForm->addText('twitch', 'Twitch URL');
+        $playerForm->addText('twitter', 'Twitter URL');
+        $playerForm->addUploadField('icon', 'Icon');
     }
 }

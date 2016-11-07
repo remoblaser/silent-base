@@ -1,0 +1,41 @@
+<?php
+return [
+    'labels' => [
+        'name'                  => __('Management', 'rb'),
+        'singular_name'         => __('Manager', 'rb'),
+        'add_new'               => __('Neuer Manager', 'rb'),
+        'all_items'             => __('Alle Manager', 'rb'),
+        'add_new_item'          => __('Neuer Manager', 'rb'),
+        'edit_item'             => __('Manager editieren', 'rb'),
+        'new_item'              => __('Neuer Manager', 'rb'),
+        'view_item'             => __('Manager ansehen', 'rb'),
+        'search_items'          => __('Manager suchen', 'rb'),
+        'not_found'             => __('Keine Manager gefunden', 'rb'),
+        'not_found_in_trash'    => __('Keine Manager im Papierkorb gefunden', 'rb'),
+        'parent_item_colon'     => __('Übergeordneter Manager', 'rb'),
+        'menu_name'             => __('Management', 'rb')
+    ],
+    'public'                => true,
+    'has_archive'           => true,
+    'publicly_queryable'    => true,
+    'query_var'             => true,
+    'rewrite'               => true,
+    'capability_type'       => 'post',
+    'hierarchical'          => false,
+    'supports' => [
+        'title',
+        //'editor',
+        //'excerpt',
+        //'thumbnail',
+        //'author',
+        //'trackbacks',
+        //'custom-fields',
+        //'comments',
+        'revisions',
+        //'page-attributes', // (menu order, hierarchical must be true to show Parent option)
+        //'post-formats',
+    ],
+    'taxonomies' => [], 
+    'menu_position'         => 5,
+    'exclude_from_search'   => false,
+];
