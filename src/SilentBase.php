@@ -15,11 +15,11 @@ class SilentBase
         add_action('init', [$this, 'registerAwardPostType']);
         add_action('init', [$this, 'registerEventTaxonomy']);
 
-        add_action('cmb2_admin_init', [$this, 'extendPlayerForm']);
-        add_action('cmb2_admin_init', [$this, 'extendAwardForm']);
-        add_action('cmb2_admin_init', [$this, 'extendSponsorForm']);
+        add_action('cmb2_admin_init', [$this, 'buildPlayerForm']);
+        add_action('cmb2_admin_init', [$this, 'buildAwardForm']);
+        add_action('cmb2_admin_init', [$this, 'buildSponsorForm']);
         add_action('cmb2_admin_init', [$this, 'buildHomeForm']);
-
+        add_action('cmb2_admin_init', [$this, 'buildEventForm']);
 
         add_action('init', [$this, 'removeRte'],100);
     }
@@ -65,7 +65,7 @@ class SilentBase
         register_post_type('sponsors', $postType);
     }
     
-    public function extendPlayerForm()
+    public function buildPlayerForm()
     {
         $playerForm = new CMBForm('player', 'Spielerinfo', ['players']);
         $playerForm->addText('name', 'Name');
@@ -77,14 +77,14 @@ class SilentBase
         $playerForm->addUploadField('player_image', 'Bild');
     }
 
-    public function extendAwardForm()
+    public function buildAwardForm()
     {
         $awardForm = new CMBForm('award', 'Awardinfo', ['awards']);
         $awardForm->addText('rank', 'Platz');
         $awardForm->addText('game', 'Game');
     }
 
-    public function extendSponsorForm()
+    public function buildSponsorForm()
     {
         $sponsorForm = new CMBForm('sponsor', 'Sponsoreninfo', ['sponsors']);
         $sponsorForm->addText('url', 'Website');
@@ -93,11 +93,17 @@ class SilentBase
 
     public function buildHomeForm()
     {
-        $pageForm = new CMBForm('page', 'Seitentexte', ['page'], ['key' => 'id', 'value' => [2]]);
+        $pageForm = new CMBForm('page', 'Seitentexte', ['page'], null, ['key' => 'id', 'value' => [2]]);
         $pageForm->addRte('about_left', 'About us - Left');
         $pageForm->addRte('about_right', 'About us - Right');
         $pageForm->addRte('about_bottom', 'About us - Bottom');
         $pageForm->addRte('community', 'Text Community');
         $pageForm->addRte('sponsors', 'Text Sponsoren');
+    }
+
+    public function buildEventForm()
+    {
+        $evenForm = new CMBForm('event', 'Info', null, ['events']);
+        $evenForm->addSelect('type', 'Typ', ['league'=>'Liga','cup'=>'Online Cup','lan'=>'LAN-Parties']);
     }
 }
