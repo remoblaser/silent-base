@@ -76,7 +76,7 @@ class SilentBase
     public function buildPlayerForm()
     {
         $playerForm = new CMBForm('player', 'Spielerinfo', ['players']);
-        $playerForm->addText('name', 'Name');
+        $playerForm->addText('lastname', 'Name');
         $playerForm->addText('prename', 'Vorname');
         $playerForm->addText('roles', 'Rollen');
         $playerForm->addText('twitch', 'Twitch URL');
@@ -101,12 +101,13 @@ class SilentBase
 
     public function buildHomeForm()
     {
-        $pageForm = new CMBForm('page', 'Seitentexte', ['page'], null, ['key' => 'id', 'value' => [2]]);
+        $pageForm = new CMBForm('page', 'Seitenoptionen', ['page'], null, ['key' => 'id', 'value' => [2]]);
         $pageForm->addRte('about_left', 'About us - Left');
         $pageForm->addRte('about_right', 'About us - Right');
         $pageForm->addRte('about_bottom', 'About us - Bottom');
         $pageForm->addRte('community', 'Text Community');
         $pageForm->addRte('sponsors', 'Text Sponsoren');
+        $pageForm->addUploadField('header_bg', 'Hintergrundbild Header');
     }
 
     public function buildEventForm()
@@ -118,7 +119,7 @@ class SilentBase
     public function buildManagementForm()
     {
         $playerForm = new CMBForm('manager', 'Manager Info', ['managers']);
-        $playerForm->addText('name', 'Name');
+        $playerForm->addText('lastname', 'Name');
         $playerForm->addText('prename', 'Vorname');
         $playerForm->addText('role', 'Rolle');
         $playerForm->addText('twitch', 'Twitch URL');
