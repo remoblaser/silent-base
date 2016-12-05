@@ -79,8 +79,8 @@ class SilentBase
         $playerForm->addText('lastname', 'Name');
         $playerForm->addText('prename', 'Vorname');
         $playerForm->addText('roles', 'Rollen');
-        $playerForm->addText('twitch', 'Twitch URL');
-        $playerForm->addText('twitter', 'Twitter URL');
+        $playerForm->addText('twitch', 'Twitch Username');
+        $playerForm->addText('twitter', 'Twitter Username');
         $playerForm->addTextArea('description', 'Beschreibung');
         $playerForm->addUploadField('player_image', 'Bild');
     }
@@ -122,8 +122,8 @@ class SilentBase
         $playerForm->addText('lastname', 'Name');
         $playerForm->addText('prename', 'Vorname');
         $playerForm->addText('role', 'Rolle');
-        $playerForm->addText('twitch', 'Twitch URL');
-        $playerForm->addText('twitter', 'Twitter URL');
+        $playerForm->addText('twitch', 'Twitch Username');
+        $playerForm->addText('twitter', 'Twitter Username');
         $playerForm->addUploadField('icon', 'Icon');
     }
 }
