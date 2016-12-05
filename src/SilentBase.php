@@ -10,7 +10,6 @@ class SilentBase
     {
         add_action('init', [$this, 'registerPlayerPostType']);
         add_action('init', [$this, 'registerTeamTaxonomy']);
-        add_action('init', [$this, 'registerSponsorTaxonomy']);
         add_action('init', [$this, 'registerSponsorPostType']);
         add_action('init', [$this, 'registerAwardPostType']);
         add_action('init', [$this, 'registerEventTaxonomy']);
@@ -19,7 +18,6 @@ class SilentBase
         add_action('cmb2_admin_init', [$this, 'buildPlayerForm']);
         add_action('cmb2_admin_init', [$this, 'buildAwardForm']);
         add_action('cmb2_admin_init', [$this, 'buildSponsorForm']);
-        add_action('cmb2_admin_init', [$this, 'buildHomeForm']);
         add_action('cmb2_admin_init', [$this, 'buildEventForm']);
         add_action('cmb2_admin_init', [$this, 'buildManagementForm']);
 
@@ -53,12 +51,6 @@ class SilentBase
     {
         $taxonomy = require(__DIR__ . '/../config/event-taxonomy.php');
         register_taxonomy('events', 'awards',  $taxonomy);
-    }
-
-    public function registerSponsorTaxonomy()
-    {
-        $taxonomy = require(__DIR__ . '/../config/sponsor-taxonomy.php');
-        register_taxonomy('sponsortypes', 'sponsors',  $taxonomy);
     }
 
     public function registerSponsorPostType()
@@ -96,24 +88,14 @@ class SilentBase
     {
         $sponsorForm = new CMBForm('sponsor', 'Sponsoreninfo', ['sponsors']);
         $sponsorForm->addText('url', 'Website');
+        $sponsorForm->addSelect('type', 'Typ', ['main'=>'Mainsponsor','normal'=>'Sponsor','partner'=>'Partner']);
         $sponsorForm->addUploadField('logo', 'Logo');
-    }
-
-    public function buildHomeForm()
-    {
-        $pageForm = new CMBForm('page', 'Seitenoptionen', ['page'], null, ['key' => 'id', 'value' => [2]]);
-        $pageForm->addRte('about_left', 'About us - Left');
-        $pageForm->addRte('about_right', 'About us - Right');
-        $pageForm->addRte('about_bottom', 'About us - Bottom');
-        $pageForm->addRte('community', 'Text Community');
-        $pageForm->addRte('sponsors', 'Text Sponsoren');
-        $pageForm->addUploadField('header_bg', 'Hintergrundbild Header');
     }
 
     public function buildEventForm()
     {
-        $evenForm = new CMBForm('event', 'Info', null, ['events']);
-        $evenForm->addSelect('type', 'Typ', ['league'=>'Liga','cup'=>'Online Cup','lan'=>'LAN-Parties']);
+        $eventForm = new CMBForm('event', 'Info', null, ['events']);
+        $eventForm->addSelect('type', 'Typ', ['league'=>'Liga','cup'=>'Online Cup','lan'=>'LAN-Parties']);
     }
 
     public function buildManagementForm()
