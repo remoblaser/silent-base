@@ -88,7 +88,7 @@ class SilentBase
     {
         $sponsorForm = new CMBForm('sponsor', 'Sponsoreninfo', ['sponsors']);
         $sponsorForm->addText('url', 'Website');
-        $sponsorForm->addSelect('type', 'Typ', ['main'=>'Mainsponsor','normal'=>'Sponsor','partner'=>'Partner']);
+        $sponsorForm->addSelect('type', 'Typ', ['normal'=>'Sponsor','main'=>'Mainsponsor','partner'=>'Partner']);
         $sponsorForm->addUploadField('logo', 'Logo');
     }
 
