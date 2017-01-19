@@ -89,6 +89,9 @@ class SilentBase
         $sponsorForm = new CMBForm('sponsor', 'Sponsoreninfo', ['sponsors']);
         $sponsorForm->addText('url', 'Website');
         $sponsorForm->addSelect('type', 'Typ', ['normal'=>'Sponsor','main'=>'Mainsponsor','partner'=>'Partner']);
+        $sponsorForm->addTextArea('description', 'Beschreibung');
+        $sponsorForm->addText('twitter', 'Twitter Username');
+        $sponsorForm->addText('facebook', 'Facebook Username');
         $sponsorForm->addUploadField('logo', 'Logo');
     }
 
@@ -100,12 +103,12 @@ class SilentBase
 
     public function buildManagementForm()
     {
-        $playerForm = new CMBForm('manager', 'Manager Info', ['managers']);
-        $playerForm->addText('lastname', 'Name');
-        $playerForm->addText('prename', 'Vorname');
-        $playerForm->addText('role', 'Rolle');
-        $playerForm->addText('twitch', 'Twitch Username');
-        $playerForm->addText('twitter', 'Twitter Username');
-        $playerForm->addUploadField('icon', 'Icon');
+        $managerForm = new CMBForm('manager', 'Manager Info', ['managers']);
+        $managerForm->addText('lastname', 'Name');
+        $managerForm->addText('prename', 'Vorname');
+        $managerForm->addText('role', 'Rolle');
+        $managerForm->addText('twitch', 'Twitch Username');
+        $managerForm->addText('twitter', 'Twitter Username');
+        $managerForm->addUploadField('icon', 'Icon');
     }
 }
