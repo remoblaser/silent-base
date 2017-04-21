@@ -19,7 +19,9 @@ class SilentBase
         add_action('cmb2_admin_init', [$this, 'buildAwardForm']);
         add_action('cmb2_admin_init', [$this, 'buildSponsorForm']);
         add_action('cmb2_admin_init', [$this, 'buildEventForm']);
+        add_action('cmb2_admin_init', [$this, 'buildCategoryForm']);
         add_action('cmb2_admin_init', [$this, 'buildManagementForm']);
+        add_action('cmb2_admin_init', [$this, 'buildPostForm']);
 
         add_action('init', [$this, 'removeRte'],100);
     }
@@ -110,5 +112,26 @@ class SilentBase
         $managerForm->addText('twitch', 'Twitch Username');
         $managerForm->addText('twitter', 'Twitter Username');
         $managerForm->addUploadField('icon', 'Icon');
+    }
+    public function buildPostForm()
+    {
+        $postForm = new CMBForm('post', 'Zusätzliches', ['post']);
+        $postForm->addTextArea('lead', 'Lead');
+        $groupId = $postForm->addGroup('slides', 'Slides', [
+            'group_title' => __( 'Slide {#}', 'cmb2' ),
+            'add_button' => __( 'Neuer Slide', 'cmb2' ),
+            'remove_button' => __( 'Slide Löschen', 'cmb2' ),
+        ]);
+        $postForm->addGroupField($groupId, [
+            'name' => 'Bild',
+            'id' => 'slide',
+            'type' => 'file'
+        ]);
+    }
+
+    public function buildCategoryForm()
+    {
+        $eventForm = new CMBForm('category', 'Zusätzliches', null, ['category']);
+        $eventForm->addUploadField('icon', 'Icon');
     }
 }

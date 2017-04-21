@@ -80,4 +80,18 @@ class CMBForm
             'options' => $entries
         ]);   
     }
+
+    public function addGroup($id, $name, $options, $desc='')
+    {
+        return $this->cmbBox->add_field([
+            'id' => $id,
+            'type' => 'group',
+            'description' => $desc,
+            'options' => $options
+        ]);
+    }
+    public function addGroupField($groupId, $field)
+    {
+        $this->cmbBox->add_group_field($groupId, $field);
+    }
 }
