@@ -92,6 +92,7 @@ class SilentBase
         $playerForm->addText('roles', 'Rollen');
         $playerForm->addText('twitch', 'Twitch Username');
         $playerForm->addText('twitter', 'Twitter Username');
+        $playerForm->addText('facebook', 'Facebook Username');
         $playerForm->addTextArea('description', 'Beschreibung');
         $playerForm->addUploadField('player_image', 'Bild');
 
@@ -109,6 +110,23 @@ class SilentBase
             'name' => 'Eventname',
             'id' => 'event',
             'type' => 'text'
+        ]);
+
+        $groupId = $playerForm->addGroup('links', 'Links', [
+            'group_title' => __( 'Link {#}', 'cmb2' ),
+            'add_button' => __( 'Neuer Link', 'cmb2' ),
+            'remove_button' => __( 'Link Löschen', 'cmb2' ),
+        ]);
+        $playerForm->addGroupField($groupId, [
+            'name' => 'URL',
+            'id' => 'url',
+            'type' => 'text'
+        ]);
+        $playerForm->addGroupField($groupId, [
+            'name' => 'Icon',
+            'id' => 'icon',
+            'type' => 'file',
+            'preview_size' => [100, 100 ]
         ]);
     }
 
