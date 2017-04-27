@@ -17,7 +17,7 @@ return [
     ],
     'public'                => true,
     'has_archive'           => true,
-    'publicly_queryable'    => true,
+    'publicly_queryable'    => false,
     'query_var'             => true,
     'rewrite'               => true,
     'capability_type'       => 'post',

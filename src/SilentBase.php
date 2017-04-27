@@ -14,7 +14,9 @@ class SilentBase
         add_action('init', [$this, 'registerAwardPostType']);
         add_action('init', [$this, 'registerEventTaxonomy']);
         add_action('init', [$this, 'registerManagementPostType']);
+        add_action('init', [$this, 'registerWorkgroupTaxonomy']);
 
+        add_action('cmb2_admin_init', [$this, 'buildTeamForm']);
         add_action('cmb2_admin_init', [$this, 'buildPlayerForm']);
         add_action('cmb2_admin_init', [$this, 'buildAwardForm']);
         add_action('cmb2_admin_init', [$this, 'buildSponsorForm']);
@@ -66,7 +68,22 @@ class SilentBase
         $postType = require(__DIR__ . '/../config/management-posttype.php');
         register_post_type('managers', $postType);
     }
-    
+
+    public function registerWorkgroupTaxonomy()
+    {
+        $taxonomy = require(__DIR__ . '/../config/workgroup-taxonomy.php');
+        register_taxonomy('workgroups', 'managers',  $taxonomy);
+    }
+
+    public function buildTeamForm()
+    {
+        $teamForm = new CMBForm('teams', 'Zusätzliches', null, ['teams']);
+        $teamForm->addText('subtitle', 'Sub-Titel');
+        $teamForm->addUploadField('teampic', 'Teambild');
+        $teamForm->addUploadField('detail_page_bg', 'Detailseite Hintergrund');
+        $teamForm->addSelect('game', 'Game', ['cs'=>'CS:GO','lol'=>'League of Legends','dota'=>'DotA 2', 'rl' => 'RocketLeague', 'hs' => 'Hearthstone']);
+    }
+
     public function buildPlayerForm()
     {
         $playerForm = new CMBForm('player', 'Spielerinfo', ['players']);
@@ -77,6 +94,22 @@ class SilentBase
         $playerForm->addText('twitter', 'Twitter Username');
         $playerForm->addTextArea('description', 'Beschreibung');
         $playerForm->addUploadField('player_image', 'Bild');
+
+        $groupId = $playerForm->addGroup('awards', 'Erfolge', [
+            'group_title' => __( 'Award {#}', 'cmb2' ),
+            'add_button' => __( 'Neuer Award', 'cmb2' ),
+            'remove_button' => __( 'Award Löschen', 'cmb2' ),
+        ]);
+        $playerForm->addGroupField($groupId, [
+            'name' => 'Position',
+            'id' => 'position',
+            'type' => 'text'
+        ]);
+        $playerForm->addGroupField($groupId, [
+            'name' => 'Eventname',
+            'id' => 'event',
+            'type' => 'text'
+        ]);
     }
 
     public function buildAwardForm()
@@ -111,7 +144,7 @@ class SilentBase
         $managerForm->addText('role', 'Rolle');
         $managerForm->addText('twitch', 'Twitch Username');
         $managerForm->addText('twitter', 'Twitter Username');
-        $managerForm->addUploadField('icon', 'Icon');
+        $managerForm->addText('email', 'E-Mail');
     }
     public function buildPostForm()
     {
