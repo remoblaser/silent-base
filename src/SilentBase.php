@@ -81,7 +81,7 @@ class SilentBase
         $teamForm->addText('subtitle', 'Sub-Titel');
         $teamForm->addUploadField('teampic', 'Teambild');
         $teamForm->addUploadField('detail_page_bg', 'Detailseite Hintergrund');
-        $teamForm->addSelect('game', 'Game', ['cs'=>'CS:GO','lol'=>'League of Legends','dota'=>'DotA 2', 'rl' => 'RocketLeague', 'hs' => 'Hearthstone']);
+        $teamForm->addSelect('game', 'Game', ['cs'=>'CS:GO','lol'=>'League of Legends','dota'=>'DotA 2', 'rl' => 'RocketLeague', 'hs' => 'Hearthstone', 'ow' => 'Overwatch']);
     }
 
     public function buildPlayerForm()
