@@ -141,7 +141,6 @@ class SilentBase
     {
         $sponsorForm = new CMBForm('sponsor', 'Sponsoreninfo', ['sponsors']);
         $sponsorForm->addText('url', 'Website');
-        $sponsorForm->addSelect('type', 'Typ', ['normal'=>'Sponsor','main'=>'Mainsponsor','partner'=>'Partner']);
         $sponsorForm->addTextArea('description', 'Beschreibung');
         $sponsorForm->addText('twitter', 'Twitter Username');
         $sponsorForm->addText('facebook', 'Facebook Username');
