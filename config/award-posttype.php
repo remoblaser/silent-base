@@ -16,10 +16,10 @@ return [
         'menu_name'             => __('Awards', 'rb')
     ],
     'public'                => true,
-    'has_archive'           => true,
-    'publicly_queryable'    => true,
+    'has_archive'           => false,
+    'publicly_queryable'    => false,
     'query_var'             => true,
-    'rewrite'               => true,
+    'rewrite'               => false,
     'capability_type'       => 'post',
     'hierarchical'          => false,
     'supports' => [

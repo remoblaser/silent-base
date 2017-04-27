@@ -163,6 +163,7 @@ class SilentBase
         $managerForm->addText('twitch', 'Twitch Username');
         $managerForm->addText('twitter', 'Twitter Username');
         $managerForm->addText('email', 'E-Mail');
+        $managerForm->addUploadField('picture', 'Bild');
     }
     public function buildPostForm()
     {
