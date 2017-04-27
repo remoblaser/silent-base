@@ -19,7 +19,7 @@ return [
     'has_archive'           => true,
     'publicly_queryable'    => true,
     'query_var'             => true,
-    'rewrite'               => false,
+    'rewrite'               => true,
     'capability_type'       => 'post',
     'hierarchical'          => false,
     'supports' => [
