@@ -16,8 +16,8 @@ return [
         'menu_name'             => __('Sponsoren', 'rb')
     ],
     'public'                => true,
-    'has_archive'           => false,
-    'publicly_queryable'    => false,
+    'has_archive'           => true,
+    'publicly_queryable'    => true,
     'query_var'             => true,
     'rewrite'               => false,
     'capability_type'       => 'post',
