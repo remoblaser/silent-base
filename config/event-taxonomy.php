@@ -18,6 +18,6 @@ return [
     'show_ui' => true,
     'show_admin_column' => true,
     'query_var' => true,
-    'rewrite' => ['slug' => 'event'],
+    'rewrite' => ['slug' => 'event', 'with_front' => false],
 
 ];

@@ -15,12 +15,11 @@ return [
         'parent_item_colon'     => __('Übergeordneter Spieler', 'rb'),
         'menu_name'             => __('Spieler', 'rb')
     ],
-    'with_front'            => false,
     'public'                => true,
     'has_archive'           => false,
     'publicly_queryable'    => false,
     'query_var'             => true,
-    'rewrite'               => false,
+    'rewrite'               => ['slug' => 'player', 'with_front' => false],
     'capability_type'       => 'post',
     'hierarchical'          => false,
     'supports' => [

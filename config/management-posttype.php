@@ -15,12 +15,11 @@ return [
         'parent_item_colon'     => __('Übergeordneter Manager', 'rb'),
         'menu_name'             => __('Management', 'rb')
     ],
-    'with_front'            => false,
     'public'                => true,
     'has_archive'           => false,
     'publicly_queryable'    => false,
     'query_var'             => true,
-    'rewrite'               => false,
+    'rewrite'               => ['slug' => 'manager', 'with_front' => false],
     'capability_type'       => 'post',
     'hierarchical'          => false,
     'supports' => [

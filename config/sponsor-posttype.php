@@ -15,12 +15,11 @@ return [
         'parent_item_colon'     => __('Übergeordneter Sponsor', 'rb'),
         'menu_name'             => __('Sponsoren', 'rb')
     ],
-    'with_front'            => false,
     'public'                => true,
     'has_archive'           => true,
     'publicly_queryable'    => true,
     'query_var'             => true,
-    'rewrite'               => true,
+    'rewrite'               => ['slug' => 'sponsor', 'with_front' => false],
     'capability_type'       => 'post',
     'hierarchical'          => false,
     'supports' => [

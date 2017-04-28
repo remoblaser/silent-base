@@ -18,6 +18,6 @@ return [
     'show_ui' => true,
     'show_admin_column' => true,
     'query_var' => true,
-    'rewrite' => ['slug' => 'workgroup'],
+    'rewrite' => ['slug' => 'workgroup', 'with_front' => false],
 
 ];
