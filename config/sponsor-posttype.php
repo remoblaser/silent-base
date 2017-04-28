@@ -19,7 +19,7 @@ return [
     'has_archive'           => true,
     'publicly_queryable'    => true,
     'query_var'             => true,
-    'rewrite'               => ['slug' => 'sponsor', 'with_front' => false],
+    'rewrite'               => ['slug' => 'sponsors', 'with_front' => false],
     'capability_type'       => 'post',
     'hierarchical'          => false,
     'supports' => [
