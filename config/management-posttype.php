@@ -15,6 +15,7 @@ return [
         'parent_item_colon'     => __('Übergeordneter Manager', 'rb'),
         'menu_name'             => __('Management', 'rb')
     ],
+    'with_front'            => false,
     'public'                => true,
     'has_archive'           => false,
     'publicly_queryable'    => false,

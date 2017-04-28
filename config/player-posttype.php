@@ -15,6 +15,7 @@ return [
         'parent_item_colon'     => __('Übergeordneter Spieler', 'rb'),
         'menu_name'             => __('Spieler', 'rb')
     ],
+    'with_front'            => false,
     'public'                => true,
     'has_archive'           => false,
     'publicly_queryable'    => false,

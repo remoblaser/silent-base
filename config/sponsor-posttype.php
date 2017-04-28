@@ -15,6 +15,7 @@ return [
         'parent_item_colon'     => __('Übergeordneter Sponsor', 'rb'),
         'menu_name'             => __('Sponsoren', 'rb')
     ],
+    'with_front'            => false,
     'public'                => true,
     'has_archive'           => true,
     'publicly_queryable'    => true,

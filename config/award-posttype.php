@@ -15,6 +15,7 @@ return [
         'parent_item_colon'     => __('Übergeordneter Award', 'rb'),
         'menu_name'             => __('Awards', 'rb')
     ],
+    'with_front'            => false,
     'public'                => true,
     'has_archive'           => false,
     'publicly_queryable'    => false,
