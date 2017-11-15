@@ -97,6 +97,7 @@ class SilentBase
         $playerForm = new CMBForm('player', 'Spielerinfo', ['players']);
         $playerForm->addText('lastname', 'Name');
         $playerForm->addText('prename', 'Vorname');
+        $playerForm->addText('order_num', 'Order Position');
         $playerForm->addText('roles', 'Rollen');
         $playerForm->addText('twitch', 'Twitch Username');
         $playerForm->addText('twitter', 'Twitter Username');
