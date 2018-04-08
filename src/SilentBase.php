@@ -38,7 +38,7 @@ class SilentBase
 	public function registerEventPostType()
 	{
 		$postType = require(__DIR__ . '/../config/event-posttype.php');
-		register_post_type('events', $postType);
+		register_post_type('front-events', $postType);
 	}
 
     public function registerPlayerPostType()
@@ -431,9 +431,11 @@ class SilentBase
 
 	public function buildEventPostTypeForm()
 	{
-		$managerForm = new CMBForm('event', 'Event Info', ['events']);
-		$managerForm->addText('from', 'Von');
-		$managerForm->addText('to', 'Bis');
+		$eventForm = new CMBForm('front-event', 'Event Info', ['front-events']);
+		$eventForm->addText('from', 'Von');
+		$eventForm->addText('to', 'Bis');
+		$eventForm->addText('url', 'Link');
+
 	}
 
     public function buildPostForm()

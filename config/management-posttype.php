@@ -38,5 +38,5 @@ return [
     ],
     'taxonomies' => [], 
     'menu_position'         => 5,
-    'exclude_from_search'   => false,
+    'exclude_from_search'   => true,
 ];

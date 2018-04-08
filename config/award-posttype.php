@@ -39,6 +39,6 @@ return [
     'taxonomies' => [// add default post categories and tags
     ], 
     'menu_position'         => 6,
-    'exclude_from_search'   => false,
+    'exclude_from_search'   => true,
 
 ];

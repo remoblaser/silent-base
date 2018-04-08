@@ -19,9 +19,10 @@ return [
 	'has_archive'           => false,
 	'publicly_queryable'    => false,
 	'query_var'             => true,
-	'rewrite'               => ['slug' => 'event', 'with_front' => false],
+	'rewrite'               => ['slug' => 'front-event', 'with_front' => false],
 	'capability_type'       => 'post',
 	'hierarchical'          => false,
+	'menu_icon'				=> 'dashicons-calendar',
 	'supports' => [
 		'title',
 		//'editor',
@@ -38,6 +39,6 @@ return [
 	'taxonomies' => [// add default post categories and tags
 	],
 	'menu_position'         => 6,
-	'exclude_from_search'   => false,
+	'exclude_from_search'   => true,
 
 ];
