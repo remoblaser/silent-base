@@ -12,9 +12,10 @@ class SilentBase
         add_action('init', [$this, 'registerTeamTaxonomy']);
         add_action('init', [$this, 'registerSponsorPostType']);
         add_action('init', [$this, 'registerAwardPostType']);
-        add_action('init', [$this, 'registerEventTaxonomy']);
-        add_action('init', [$this, 'registerManagementPostType']);
+		add_action('init', [$this, 'registerEventTaxonomy']);
+		add_action('init', [$this, 'registerManagementPostType']);
         add_action('init', [$this, 'registerWorkgroupTaxonomy']);
+		add_action('init', [$this, 'registerEventPostType']);
 
         add_action('cmb2_admin_init', [$this, 'buildTeamForm']);
         add_action('cmb2_admin_init', [$this, 'buildPlayerForm']);
@@ -24,6 +25,7 @@ class SilentBase
         add_action('cmb2_admin_init', [$this, 'buildCategoryForm']);
         add_action('cmb2_admin_init', [$this, 'buildManagementForm']);
         add_action('cmb2_admin_init', [$this, 'buildPostForm']);
+		add_action('cmb2_admin_init', [$this, 'buildEventPostTypeForm']);
 
         add_action('init', [$this, 'removeRte'],100);
     }
@@ -32,6 +34,12 @@ class SilentBase
     {
         remove_post_type_support('page', 'editor');
     }
+
+	public function registerEventPostType()
+	{
+		$postType = require(__DIR__ . '/../config/event-posttype.php');
+		register_post_type('events', $postType);
+	}
 
     public function registerPlayerPostType()
     {
@@ -420,20 +428,18 @@ class SilentBase
         $managerForm->addText('sort', 'Sortierung');
         $managerForm->addUploadField('picture', 'Bild');
     }
+
+	public function buildEventPostTypeForm()
+	{
+		$managerForm = new CMBForm('event', 'Event Info', ['events']);
+		$managerForm->addText('from', 'Von');
+		$managerForm->addText('to', 'Bis');
+	}
+
     public function buildPostForm()
     {
         $postForm = new CMBForm('post', 'Zusätzliches', ['post']);
         $postForm->addTextArea('lead', 'Lead');
-        $groupId = $postForm->addGroup('slides', 'Slides', [
-            'group_title' => __( 'Slide {#}', 'cmb2' ),
-            'add_button' => __( 'Neuer Slide', 'cmb2' ),
-            'remove_button' => __( 'Slide Löschen', 'cmb2' ),
-        ]);
-        $postForm->addGroupField($groupId, [
-            'name' => 'Bild',
-            'id' => 'slide',
-            'type' => 'file'
-        ]);
     }
 
     public function buildCategoryForm()

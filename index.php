@@ -21,8 +21,9 @@ require_once('vendor/autoload.php');
 
 use Remoblaser\Plugin\SilentBase;
 
-$plugin = new SilentBase();
-
-$plugin->init();
+if(!defined('WP_CLI')) {
+	$plugin = new SilentBase();
+	$plugin->init();
+}
 
 

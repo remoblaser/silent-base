@@ -22,6 +22,7 @@ return [
     'rewrite'               => ['slug' => 'award', 'with_front' => false],
     'capability_type'       => 'post',
     'hierarchical'          => false,
+	'menu_icon'				=> 'dashicons-awards',
     'supports' => [
         'title',
         //'editor',

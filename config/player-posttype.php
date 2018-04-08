@@ -22,6 +22,7 @@ return [
     'rewrite'               => ['slug' => 'player', 'with_front' => false],
     'capability_type'       => 'post',
     'hierarchical'          => false,
+	'menu_icon'				=> 'dashicons-admin-users',
     'supports' => [
         'title',
         //'editor',

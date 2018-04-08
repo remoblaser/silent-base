@@ -22,6 +22,7 @@ return [
     'rewrite'               => ['slug' => 'sponsors', 'with_front' => false],
     'capability_type'       => 'post',
     'hierarchical'          => false,
+	'menu_icon'				=> 'dashicons-groups',
     'supports' => [
         'title',
         //'editor',

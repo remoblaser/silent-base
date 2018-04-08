@@ -22,6 +22,7 @@ return [
     'rewrite'               => ['slug' => 'manager', 'with_front' => false],
     'capability_type'       => 'post',
     'hierarchical'          => false,
+	'menu_icon'				=> 'dashicons-businessman',
     'supports' => [
         'title',
         //'editor',
