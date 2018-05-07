@@ -96,7 +96,8 @@ class SilentBase
             'rl' => 'RocketLeague', 
             'hs' => 'Hearthstone', 
             'ow' => 'Overwatch',
-            'pubg' => 'Playerunknown\'s Battlegrounds'
+            'pubg' => 'Playerunknown\'s Battlegrounds',
+            'smash' => 'Smash'
         ]);
     }
 
