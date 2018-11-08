@@ -97,7 +97,8 @@ class SilentBase
             'hs' => 'Hearthstone', 
             'ow' => 'Overwatch',
             'pubg' => 'Playerunknown\'s Battlegrounds',
-            'smash' => 'Smash'
+            'smash' => 'Smash',
+            'fortnite' => 'Fortnite'
         ]);
     }
 
